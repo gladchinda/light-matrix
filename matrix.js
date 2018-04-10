@@ -1,7 +1,7 @@
 (function(window, undefined) {
 	"use strict";
 
-	var xmath = window.xmath || {},
+	var Mathx = window.Mathx || {},
 
 	castArgs = function(args) {
 		return Array.prototype.slice.call(args, 0);
@@ -172,7 +172,7 @@
 		return child;
 	},
 
-	matrix = extend({
+	matrix = {
 
 		ok: function() {
 			return isMatrix.apply(null, arguments);
@@ -293,67 +293,11 @@
 		inverse: function() {
 			var args = castArgs(arguments);
 			return use(this)('product', [reciprocal(use(this)('determinant', args)), use(this)('adjoint', args)]);
-		},
-
-		wrap: function() {
-			return use(new matrix())('define', castArgs(arguments));
 		}
 
-	},
-	function() {
-		(arguments.length > 0) && use(this)('define', castArgs(arguments));
-	}),
-	
-	matrix_proto = matrix.prototype;
+	};
 
-	matrix_proto = extend({
-		define: function() {
-			var args = castArgs(arguments);
-			if (args.length === 1 && args[0] instanceof matrix) {
-				this.matrix = args[0].copy();
-			} else if (!use(matrix)('ok', args)) {
-				throw new Error('Invalid matrix specification.');
-			} else {
-				this.matrix = args;
-			}
-			return this;
-		},
-		copy: function() {
-			return copyArray(this.matrix);
-		},
-		dimension: function() {
-			return use(matrix)('dimension', this.matrix);
-		},
-		equal: function(a) {
-			return use(matrix)('equal', [this.matrix, (a instanceof matrix) ? a.matrix : a]);
-		},
-		sum: function() {
-			return use(new matrix())('define', (use(matrix)('sum', [this.copy()].concat(castArgs(arguments)))));
-		},
-		product: function() {
-			return use(new matrix())('define', (use(matrix)('product', [this.copy()].concat(castArgs(arguments)))));
-		},
-		transpose: function() {
-			return use(new matrix())('define', use(matrix)('transpose', this.copy()));
-		},
-		determinant: function() {
-			return use(matrix)('determinant', this.matrix);
-		},
-		minors: function() {
-			return use(new matrix())('define', use(matrix)('minors', this.copy()));
-		},
-		cofactors: function() {
-			return use(new matrix())('define', use(matrix)('cofactors', this.copy()));
-		},
-		adjoint: function() {
-			return use(new matrix())('define', use(matrix)('adjoint', this.copy()));
-		},
-		inverse: function() {
-			return use(new matrix())('define', use(matrix)('inverse', this.copy()));
-		},
-	}, matrix_proto);
-
-	xmath.Matrix = matrix;
-	window.xmath = xmath;
+	Mathx.Matrix = matrix;
+	window.Mathx = Mathx;
 
 })(window);
