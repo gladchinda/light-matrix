@@ -1,0 +1,42 @@
+{
+    "name": "lightmatrix",
+    "version": "1.0.0",
+    "description": "Lightweight JavaScript library for basic matrix computations.",
+    "main": "index.js",
+    "devDependencies": {
+        "chai": "^4.1.2",
+        "mocha": "^5.0.5"
+    },
+    "moduleType": [
+        "globals",
+        "node"
+    ],
+    "keywords": [
+        "matrix",
+        "lightmatrix",
+        "compute",
+        "math",
+        "inverse",
+        "adjoint",
+        "transpose",
+        "cofactors",
+        "determinant"
+    ],
+    "authors": [
+        "Glad Chinda <gladxeqs@gmail.com>"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gladchinda/light-matrix.git"
+    },
+    "homepage": "https://github.com/gladchinda/light-matrix/blob/master/README.md",
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "private": false
+}
