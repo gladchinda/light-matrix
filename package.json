@@ -1,5 +1,5 @@
 {
-    "name": "@gladchinda/simplematrix",
+    "name": "@gladchinda/lightmatrix",
     "version": "1.0.0",
     "description": "Lightweight JavaScript library for basic matrix computations.",
     "main": "index.js",
@@ -8,10 +8,11 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://gladchinda@bitbucket.org/gladchinda/old-matrix-js.git"
+        "url": "git+https://github.com/gladchinda/light-matrix.git"
     },
     "keywords": [
         "matrix",
+        "lightmatrix",
         "compute",
         "math",
         "inverse",
@@ -22,7 +23,7 @@
     ],
     "author": "Glad Chinda <gladxeqs@gmail.com>",
     "license": "MIT",
-    "homepage": "https://bitbucket.org/gladchinda/old-matrix-js#readme",
+    "homepage": "https://github.com/gladchinda/light-matrix/blob/master/README.md",
     "devDependencies": {
         "chai": "^4.1.2",
         "mocha": "^5.0.5"
