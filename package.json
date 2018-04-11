@@ -10,6 +10,10 @@
         "type": "git",
         "url": "git+https://github.com/gladchinda/light-matrix.git"
     },
+    "bugs": {
+        "url": "https://github.com/gladchinda/light-matrix/issues",
+        "email": "gladxeqs@gmail.com"
+    },
     "keywords": [
         "matrix",
         "lightmatrix",

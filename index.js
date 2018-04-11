@@ -26,8 +26,8 @@ var _matrix = {
 };
 
 if (typeof window !== "undefined") {
-	var SimpleMatrix = window.SimpleMatrix || _matrix;
-	window.SimpleMatrix = SimpleMatrix;
+	var LightMatrix = window.LightMatrix || _matrix;
+	window.LightMatrix = LightMatrix;
 }
 
 module.exports = _matrix;
