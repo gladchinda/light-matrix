@@ -446,8 +446,8 @@ var _matrix = {
 };
 
 if (typeof window !== "undefined") {
-	var LightMatrix = window.LightMatrix || _matrix;
-	window.LightMatrix = LightMatrix;
+	var lightmatrix = window.lightmatrix || _matrix;
+	window.lightmatrix = lightmatrix;
 }
 
 module.exports = _matrix;
