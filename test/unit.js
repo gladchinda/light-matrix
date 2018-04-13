@@ -18,7 +18,7 @@ describe('SimpleMatrix.unit()', function() {
 
 	describe('with dimension (0)', function() {
 		it('should return 2x2 unit matrix', function() {
-			expect(SimpleMatrix.unit(2)).to.be.an("array").of.length(2).and.to.have.deep.ordered.members(unitMatrix2x2);
+			expect(SimpleMatrix.unit(0)).to.be.an("array").of.length(2).and.to.have.deep.ordered.members(unitMatrix2x2);
 		});
 	});
 
