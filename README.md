@@ -98,18 +98,18 @@ var matrix = [
 
 Here are the available methods of the `lightmatrix` module:
 
-- ok
-- dimension
-- unit
-- equal
-- sum
-- product
-- transpose
-- determinant
-- minors
-- cofactors
-- adjoint
-- inverse
+- [ok](#lightmatrixokmatrix)
+- [dimension](#lightmatrixdimensionmatrix)
+- [unit](#lightmatrixunitdimension)
+- [equal](#lightmatrixequalmatrixa-matrixb)
+- [sum](#lightmatrixsummatrixa-matrixb)
+- [product](#lightmatrixproductmatrixorscalara-matrixorscalarb)
+- [transpose](#lightmatrixtransposematrix)
+- [determinant](#lightmatrixdeterminantmatrix)
+- [minors](#lightmatrixminorsmatrix)
+- [cofactors](#lightmatrixcofactorsmatrix)
+- [adjoint](#lightmatrixadjointmatrix)
+- [inverse](#lightmatrixinversematrix)
 
 #### `lightmatrix.ok(matrix)`
 
