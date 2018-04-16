@@ -1,0 +1,21 @@
+{
+    "env": {
+        "commonjs": {
+            "presets": [
+                [
+                    "env",
+                    {
+                        "useBuiltIns": false,
+                        "modules": "commonjs",
+                        "targets": {
+                            "node": "6.0"
+                        }
+                    }
+                ]
+            ],
+            "plugins": [
+                "add-module-exports"
+            ]
+        }
+    }
+}
