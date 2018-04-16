@@ -3,8 +3,8 @@ root = true
 
 [*]
 # change these settings to your own preference
-indent_style = tab
-indent_size = 4
+indent_style = spaces
+indent_size = 2
 
 # it's recommend to keep these unchanged
 end_of_line = lf
@@ -16,5 +16,5 @@ insert_final_newline = true
 trim_trailing_whitespace = false
 
 [{package,bower}.json]
-indent_style = tab
-indent_size = 4
+indent_style = spaces
+indent_size = 2
