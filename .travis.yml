@@ -2,4 +2,4 @@ language: node_js
 node_js:
   - "6"
 scripts:
-  - npm test
+  - npm run build && npm test && npm run clean
