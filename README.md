@@ -2,6 +2,16 @@
 
 > Lightweight JavaScript library for basic matrix computations.
 
+1. [Installation and Usage](#installation-and-usage)
+	- [Node Usage](#node-usage)
+	- [Browser Usage](#browser-usage)
+2. [API Reference](#api-reference)
+	- [Matrix Specification](#matrix-specification)
+	- [`lightmatrix` Methods](#lightmatrix-methods)
+3. [License](#license)
+
+<br/>
+
 ## Installation and Usage
 
 ### Node Usage
@@ -84,22 +94,22 @@ var matrix = [
 ];
 ```
 
-### Methods
+### `lightmatrix` Methods
 
 Here are the available methods of the `lightmatrix` module:
 
-- ok
-- dimension
-- unit
-- equal
-- sum
-- product
-- transpose
-- determinant
-- minors
-- cofactors
-- adjoint
-- inverse
+- [ok](#lightmatrixokmatrix)
+- [dimension](#lightmatrixdimensionmatrix)
+- [unit](#lightmatrixunitdimension)
+- [equal](#lightmatrixequalmatrixa-matrixb)
+- [sum](#lightmatrixsummatrixa-matrixb)
+- [product](#lightmatrixproductmatrixorscalara-matrixorscalarb)
+- [transpose](#lightmatrixtransposematrix)
+- [determinant](#lightmatrixdeterminantmatrix)
+- [minors](#lightmatrixminorsmatrix)
+- [cofactors](#lightmatrixcofactorsmatrix)
+- [adjoint](#lightmatrixadjointmatrix)
+- [inverse](#lightmatrixinversematrix)
 
 #### `lightmatrix.ok(matrix)`
 
@@ -368,3 +378,7 @@ console.log(lightmatrix.inverse(matrixA)); // [ [0.5, -1.25], [0.5, -1] ]
 console.log(lightmatrix.inverse(matrixB)); // throws Error (singular matrix)
 console.log(lightmatrix.inverse(matrixC)); // throws Error (non-square matrix)
 ```
+
+## License
+
+The `lightmatrix` package is covered by the **MIT License**.
