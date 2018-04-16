@@ -12,7 +12,7 @@
         "src"
     ],
     "scripts": {
-        "prepare": "npm run clean && npm test && npm run build",
+        "prepare": "npm run clean && npm run build && npm test",
         "lint": "eslint src test --ext .js",
         "lint-fix": "eslint --fix src test --ext .js",
         "coverage": "istanbul cover _mocha",
@@ -24,9 +24,9 @@
         "build:commonjs:watch": "npm run build:commonjs -- --watch",
         "build:es": "cross-env babel src --out-dir esm --copy-dir",
         "build:es:watch": "npm run build:es -- --watch",
-        "build:umd": "cross-env NODE_ENV=development rollup src/index.js --config --sourcemap --file dist/matrix.js",
+        "build:umd": "cross-env NODE_ENV=development rollup src/index.js --config --sourcemap --file dist/lightmatrix.js",
         "build:umd:watch": "npm run build:umd -- --watch",
-        "build:umd:min": "cross-env NODE_ENV=production rollup src/index.js --config --file dist/matrix.min.js"
+        "build:umd:min": "cross-env NODE_ENV=production rollup src/index.js --config --file dist/lightmatrix.min.js"
     },
     "pre-commit": [
         "build",

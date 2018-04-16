@@ -115,7 +115,7 @@ Here are the available methods of the `lightmatrix` module:
 
 **Alias:** `lightmatrix.valid`
 
-Tests the input `matrix` argument to verify it is a valid matrix. It returns `true` if it is a valid matrix, otherwise it returns `false`. However, if the `matrix` argument has a `non-array` value, a `TypeError` is thrown.
+Tests the input `matrix` argument to verify it is a valid matrix. It returns `true` if it is a valid matrix, otherwise it returns `false`.
 
 ```js
 var matrix = [
@@ -125,15 +125,14 @@ var matrix = [
 
 console.log(lightmatrix.ok(matrix)); // true
 console.log(lightmatrix.valid([1, 2, 3])); // false
-
-console.log(lightmatrix.valid(5)); // throws TypeError
+console.log(lightmatrix.valid(5)); // false
 ```
 
 #### `lightmatrix.dimension(matrix)`
 
 **Alias:** `lightmatrix.order`
 
-Returns the order of the `matrix` argument as an array of the format `[rows, cols]`. However, if the `matrix` argument is an `array` but invalid, an `Error` is thrown. If the `matrix` argument has a `non-array` value, a `TypeError` is thrown.
+Returns the order of the `matrix` argument as an array of the format `[rows, cols]`. However, if the `matrix` argument is an `array` but an invalid matrix, or a `non-array`, an `'Error: Invalid matrix specification.'` is thrown.
 
 ```js
 var matrix = [
@@ -144,7 +143,7 @@ var matrix = [
 console.log(lightmatrix.dimension(matrix)); // [2, 3]
 
 console.log(lightmatrix.order([1, 2, 3])); // throws Error
-console.log(lightmatrix.order(5)); // throws TypeError
+console.log(lightmatrix.order(5)); // throws Error
 ```
 
 #### `lightmatrix.unit(dimension)`
@@ -162,7 +161,7 @@ console.log(lightmatrix.identity(0)); // [ [1, 0], [0, 1] ]
 
 **Alias:** `lightmatrix.same`
 
-Compares the two input matrix arguments `matrixA` and `matrixB` to verify they are of the same order and contain the same elements at all positions. It returns `true` these conditions are met, otherwise it returns `false`. However, if any of the matrix arguments is an `array` but invalid, an `Error` is thrown. If any of the matrix arguments has a `non-array` value, a `TypeError` is thrown.
+Compares the two input matrix arguments `matrixA` and `matrixB` to verify they are of the same order and contain the same elements at all positions. It returns `true` these conditions are met, otherwise it returns `false`. However, if any of the `matrix` arguments is an `array` but an invalid matrix, or a `non-array`, an `'Error: Invalid matrix specification.'` is thrown.
 
 ```js
 var matrixA = [
@@ -183,7 +182,7 @@ console.log(lightmatrix.same(matrixB, matrixB)); // true
 
 **Alias:** `lightmatrix.add`
 
-Adds the two input matrix arguments `matrixA` and `matrixB` and returns the resulting matrix provided that the input matrices are of the same order. However, if the input matrices are of different orders, an `Error` is thrown. If any of the matrix arguments is an `array` but invalid, an `Error` is thrown. Also, if any of the matrix arguments has a `non-array` value, a `TypeError` is thrown.
+Adds the two input matrix arguments `matrixA` and `matrixB` and returns the resulting matrix provided that the input matrices are of the same order. However, if the input matrices are of different orders, an `'Error: Matrices not compatible.'` is thrown. If any of the `matrix` arguments is an `array` but an invalid matrix, or a `non-array`, an `'Error: Invalid matrix specification.'` is thrown.
 
 ```js
 var matrixA = [
@@ -206,11 +205,11 @@ console.log(lightmatrix.add(matrixA, matrixA)); // [ [2, 4], [8, 10] ]
 
 Multiplies the two input matrix/scalar arguments `matrixOrScalarA` and `matrixOrScalarB`.
 
-If _two scalars_ are supplied, then the arithmetic product of the scalars is returned. If _one scalar_ and _one matrix_ are supplied, then the resulting scalar product matrix is returned. However, if _two matrices_ are supplied, it returns the resulting product matrix provided that the matrix product `matrixOrScalarA * matrixOrScalarB` is possible, otherwise an `Error` is thrown.
+If _two scalars_ are supplied, then the arithmetic product of the scalars is returned. If _one scalar_ and _one matrix_ are supplied, then the resulting scalar product matrix is returned. However, if _two matrices_ are supplied, it returns the resulting product matrix provided that the matrix product `matrixOrScalarA * matrixOrScalarB` is possible, otherwise an `'Error: Matrices not compatible.'` is thrown.
 
 > **Note:** The scalar is required to strictly be of the `number` type.
 
-If any of the matrix arguments is an `array` but invalid, an `Error` is thrown. Also, if any of the matrix arguments has a `non-array` value or is not a `number`, a `TypeError` is thrown.
+If any of the `matrix` arguments is an `array` but an invalid matrix, or a `non-array`, an `'Error: Invalid arguments supplied.'` is thrown.
 
 ```js
 var matrixA = [
@@ -237,7 +236,7 @@ console.log(lightmatrix.product(matrixA, matrixC)); // throws Error
 
 #### `lightmatrix.transpose(matrix)`
 
-Transposes the input `matrix` argument and returns the transposed matrix provided that the input matrix is valid. However, if the `matrix` argument is an `array` but invalid, an `Error` is thrown. If the `matrix` argument has a `non-array` value, a `TypeError` is thrown.
+Transposes the input `matrix` argument and returns the transposed matrix provided that the input matrix is valid. However, if the `matrix` argument is an `array` but an invalid matrix, or a `non-array`, an `'Error: Invalid matrix specification.'` is thrown.
 
 ```js
 var matrix = [
@@ -253,11 +252,11 @@ console.log(lightmatrix.transpose([1, 2, 3])); // throws Error
 
 Computes and returns the _determinant_ of the `matrix` argument provided that the input matrix is valid and is a square matrix.
 
-> **Note:** The matrix must be a _square matrix_ to be able to compute its determinant otherwise an `Error` will be thrown.
-  
+> **Note:** The matrix must be a _square matrix_ to be able to compute its determinant otherwise an `'Error: Square matrix required.'` will be thrown.
+
 > **Note:** The determinant is `0` for a _singular matrix_ which means the _inverse_ of such a matrix does not exist.
 
-If the `matrix` argument is an `array` but invalid, an `Error` is thrown. If the `matrix` argument has a `non-array` value, a `TypeError` is thrown.
+If the `matrix` argument is an `array` but an invalid matrix, or a `non-array`, an `'Error: Invalid matrix specification.'` is thrown.
 
 ```js
 var matrixA = [
@@ -279,9 +278,9 @@ console.log(lightmatrix.determinant(matrixB)); // throws Error (non-square matri
 
 Computes the _minor_ of each element of the `matrix` argument and returns a matrix of the minors provided that the input matrix is valid and is a square matrix.
 
-> **Note:** The matrix must be a _square matrix_ to be able to compute its minors otherwise an `Error` will be thrown.
+> **Note:** The matrix must be a _square matrix_ to be able to compute its minors otherwise an `'Error: Square matrix required.'` will be thrown.
 
-If the `matrix` argument is an `array` but invalid, an `Error` is thrown. If the `matrix` argument has a `non-array` value, a `TypeError` is thrown.
+if the `matrix` argument is an `array` but an invalid matrix, or a `non-array`, an `'Error: Invalid matrix specification.'` is thrown.
 
 ```js
 var matrixA = [
@@ -303,9 +302,9 @@ console.log(lightmatrix.minors(matrixB)); // throws Error (non-square matrix)
 
 Computes the _cofactor_ of each element of the `matrix` argument and returns a matrix of the cofactors provided that the input matrix is valid and is a square matrix.
 
-> **Note:** The matrix must be a _square matrix_ to be able to compute its cofactors otherwise an `Error` will be thrown.
+> **Note:** The matrix must be a _square matrix_ to be able to compute its cofactors otherwise an `'Error: Square matrix required.'` will be thrown.
 
-If the `matrix` argument is an `array` but invalid, an `Error` is thrown. If the `matrix` argument has a `non-array` value, a `TypeError` is thrown.
+if the `matrix` argument is an `array` but an invalid matrix, or a `non-array`, an `'Error: Invalid matrix specification.'` is thrown.
 
 ```js
 var matrixA = [
@@ -327,9 +326,9 @@ console.log(lightmatrix.cofactors(matrixB)); // throws Error (non-square matrix)
 
 Computes and returns the _adjoint_ (transpose of the cofactors matrix) of the `matrix` argument provided that the input matrix is valid and is a square matrix.
 
-> **Note:** The matrix must be a _square matrix_ to be able to compute its adjoint otherwise an `Error` will be thrown.
+> **Note:** The matrix must be a _square matrix_ to be able to compute its adjoint otherwise an `'Error: Square matrix required.'` will be thrown.
 
-If the `matrix` argument is an `array` but invalid, an `Error` is thrown. If the `matrix` argument has a `non-array` value, a `TypeError` is thrown.
+if the `matrix` argument is an `array` but an invalid matrix, or a `non-array`, an `'Error: Invalid matrix specification.'` is thrown.
 
 ```js
 var matrixA = [
@@ -351,11 +350,11 @@ console.log(lightmatrix.adjoint(matrixB)); // throws Error (non-square matrix)
 
 Computes and returns the _inverse_ (scalar product of the adjoint matrix and the reciprocal of the determinant) of the `matrix` argument provided that the input matrix is valid and is a square matrix.
 
-> **Note:** The matrix must be a _square matrix_ to be able to compute its inverse otherwise an `Error` will be thrown.
+> **Note:** The matrix must be a _square matrix_ to be able to compute its inverse otherwise an `'Error: Square matrix required.'` will be thrown.
 
-> **Note:** The inverse cannot be computed for a _singular matrix_ since its determinant is `0`. Attempting to compute the inverse throws an `Error`.
+> **Note:** The inverse cannot be computed for a _singular matrix_ since its determinant is `0`. Attempting to compute the inverse throws an `'Error: Cannot compute inverse of singular matrix.'`.
 
-If the `matrix` argument is an `array` but invalid, an `Error` is thrown. If the `matrix` argument has a `non-array` value, a `TypeError` is thrown.
+if the `matrix` argument is an `array` but an invalid matrix, or a `non-array`, an `'Error: Invalid matrix specification.'` is thrown.
 
 ```js
 var matrixA = [
@@ -381,4 +380,32 @@ console.log(lightmatrix.inverse(matrixC)); // throws Error (non-square matrix)
 
 ## License
 
-The `lightmatrix` package is covered by the **MIT License**.
+The `lightmatrix` package is covered by the **MIT License** (please read carefully).
+
+___
+
+```plain
+
+MIT License
+
+Copyright (c) 2018 Glad Chinda
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+```
