@@ -16,6 +16,17 @@
             "plugins": [
                 "add-module-exports"
             ]
+        },
+        "es": {
+            "presets": [
+                [
+                    "env",
+                    {
+                        "useBuiltIns": false,
+                        "modules": false
+                    }
+                ]
+            ]
         }
     }
 }
