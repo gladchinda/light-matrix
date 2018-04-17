@@ -9,6 +9,9 @@ yarn-error.log*
 esm
 lib
 
+# package-lock.json
+package-lock.json
+
 # Runtime data
 pids
 *.pid
