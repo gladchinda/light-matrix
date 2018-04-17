@@ -26,12 +26,14 @@
         "build:es:watch": "npm run build:es -- --watch",
         "build:umd": "cross-env NODE_ENV=development rollup src/index.js --config --sourcemap --file dist/lightmatrix.js",
         "build:umd:watch": "npm run build:umd -- --watch",
-        "build:umd:min": "cross-env NODE_ENV=production rollup src/index.js --config --file dist/lightmatrix.min.js"
+        "build:umd:min": "cross-env NODE_ENV=production rollup src/index.js --config --file dist/lightmatrix.min.js",
+        "build:dist": "npm run build:umd && npm run build:umd:min"
     },
     "pre-commit": [
         "build",
         "test",
-        "clean"
+        "clean",
+        "build:dist"
     ],
     "repository": {
         "type": "git",
